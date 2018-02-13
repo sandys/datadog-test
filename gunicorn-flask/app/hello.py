@@ -9,6 +9,9 @@ import blinker as _
 from ddtrace import tracer
 from ddtrace.contrib.flask import TraceMiddleware
 
+from ddtrace import patch_all
+patch_all()
+
 log = logging.getLogger(__name__)
 app = Flask(__name__)
 

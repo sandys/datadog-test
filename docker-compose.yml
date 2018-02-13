@@ -20,4 +20,4 @@ services:
     environment:
       - DATADOG_TRACE_AGENT_HOSTNAME=datadog  
       - DATADOG_TRACE_AGENT_PORT=8126 
-      - DATADOG_STATSD_AGENT_PORT=8126 
+      - DATADOG_STATSD_AGENT_PORT=8125 
