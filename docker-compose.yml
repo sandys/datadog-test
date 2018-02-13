@@ -2,6 +2,9 @@ version: '3'
 services:
   datadog:
     image: datadog/docker-dd-agent:latest
+    ports: 
+      - 8126:8126
+      - 8125:8125
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /proc/:/host/proc/:ro
