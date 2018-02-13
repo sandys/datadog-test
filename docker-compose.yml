@@ -1,0 +1,23 @@
+version: '3'
+services:
+  datadog:
+    image: datadog/docker-dd-agent:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /proc/:/host/proc/:ro
+      - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
+    environment:
+      - DD_HOSTNAME=test
+      - DD_API_KEY=c441a13bfdec2aea1784fde4f5f4d04c
+      - DD_APM_ENABLED=true
+      - SD_BACKEND=docker 
+  api:
+    build: gunicorn-flask 
+    depends_on: 
+      - datadog
+    ports: 
+      - 5000:5000
+    environment:
+      - DATADOG_TRACE_AGENT_HOSTNAME=datadog  
+      - DATADOG_TRACE_AGENT_PORT=8126 
+      - DATADOG_STATSD_AGENT_PORT=8126 
