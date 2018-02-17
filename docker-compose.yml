@@ -1,8 +1,6 @@
 version: '3'
 services:
   datadog:
-    links:
-      - api 
     image: datadog/docker-dd-agent:latest
     ports: 
       - 8126:8126

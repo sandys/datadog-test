@@ -14,7 +14,7 @@ patch_all()
 
 log = logging.getLogger(__name__)
 app = Flask(__name__)
-
+tracer.configure(hostname='datadog')
 traced_app = TraceMiddleware(app, tracer, service="my-flask-app", distributed_tracing=False)
 
 @app.route('/')
