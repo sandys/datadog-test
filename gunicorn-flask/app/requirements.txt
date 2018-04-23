@@ -7,3 +7,5 @@ itsdangerous==0.24
 wsgiref==0.1.2
 ddtrace
 blinker
+scout-apm
+gevent

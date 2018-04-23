@@ -19,5 +19,5 @@ WORKDIR /deploy/app
 #CMD ["ddtrace-run","/usr/bin/gunicorn", "--config", "/deploy/gunicorn_config.py", "--statsd-host","${DATADOG_TRACE_AGENT_HOSTNAME}:${DATADOG_STATSD_AGENT_PORT}", "hello:app"]
 #CMD ["/bin/bash","-c","ddtrace-run /usr/bin/gunicorn --config /deploy/gunicorn_config.py --statsd-host ${DATADOG_TRACE_AGENT_HOSTNAME}:${DATADOG_STATSD_AGENT_PORT} hello:app"]
 #CMD ["/bin/bash","-c","/usr/bin/gunicorn --config /deploy/gunicorn_config.py hello:app"]
-CMD ["/bin/bash","-c","/usr/bin/gunicorn --config /deploy/gunicorn_config.py --statsd-host ${DATADOG_TRACE_AGENT_HOSTNAME}:${DATADOG_STATSD_AGENT_PORT} hello:app"]
+CMD ["/usr/bin/gunicorn", "--config", "/deploy/gunicorn_config.py",  "hello:app"]
 #CMD ["ddtrace-run","/usr/bin/gunicorn", "--config", "/deploy/gunicorn_config.py", "hello:app"]
