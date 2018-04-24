@@ -1,12 +1,12 @@
 # gunicorn-flask
 
-FROM ubuntu:16.04
+FROM python:3.6-stretch 
 MAINTAINER Daniel Riti <dmriti@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update
-RUN apt-get install -y python python-pip python-virtualenv gunicorn
+#RUN apt-get install -y python python-pip python-virtualenv gunicorn
 
 # Setup flask application
 RUN mkdir -p /deploy/app
@@ -19,5 +19,5 @@ WORKDIR /deploy/app
 #CMD ["ddtrace-run","/usr/bin/gunicorn", "--config", "/deploy/gunicorn_config.py", "--statsd-host","${DATADOG_TRACE_AGENT_HOSTNAME}:${DATADOG_STATSD_AGENT_PORT}", "hello:app"]
 #CMD ["/bin/bash","-c","ddtrace-run /usr/bin/gunicorn --config /deploy/gunicorn_config.py --statsd-host ${DATADOG_TRACE_AGENT_HOSTNAME}:${DATADOG_STATSD_AGENT_PORT} hello:app"]
 #CMD ["/bin/bash","-c","/usr/bin/gunicorn --config /deploy/gunicorn_config.py hello:app"]
-CMD ["/usr/bin/gunicorn", "--config", "/deploy/gunicorn_config.py",  "hello:app"]
+CMD ["gunicorn", "--config", "/deploy/gunicorn_config.py",  "hello:app"]
 #CMD ["ddtrace-run","/usr/bin/gunicorn", "--config", "/deploy/gunicorn_config.py", "hello:app"]
